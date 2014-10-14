@@ -1,5 +1,5 @@
 #famous-workshop
-> Workshop accompanying an introduction to famo.us. Based om [famous-webpack-seed](https://github.com/markmarijnissen/famous-webpack-seed).
+> Workshop accompanying an introduction to famo.us. Based on [famous-webpack-seed](https://github.com/markmarijnissen/famous-webpack-seed).
 
 ### 
 
