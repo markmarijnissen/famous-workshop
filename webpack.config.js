@@ -38,9 +38,7 @@ var config = {
       { test: /\.less$/,            loader: "style-loader!css-loader!less-loader" },
       { test: /\.jade$/,            loader: "jade-loader" },
       { test: /\.(png|jpg|gif)$/,   loader: "url-loader?limit=50000&name=[path][name].[ext]" },
-      { test: /\.eot$/,             loader: "file-loader?name=[path][name].[ext]" },
-      { test: /\.ttf$/,             loader: "file-loader?name=[path][name].[ext]" },
-      { test: /\.svg$/,             loader: "file-loader?name=[path][name].[ext]" },
+      { test: /\.(eot|ttf|svg|woff)(\?.*)?$/, loader: "file-loader?name=[path][name].[ext]" },
       { test: /index\.html$/,       loader: "file-loader?name=[path][name].[ext]" }
     ]
   },

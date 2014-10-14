@@ -7,7 +7,7 @@ module.exports = {
    */
   router: {
     home:"page1",
-      routes: {
+    routes: {
       "page1":"page1", // router-id : href
       "page2":"page2",
       "page3":"page3",
@@ -15,10 +15,17 @@ module.exports = {
   },
 
   /*
+    Sidepanel config
+   */
+  sidepanel: {
+    width: 225
+  },
+
+  /*
     Menu config
    */
   menu: {
-
+    
   },
 
   /*

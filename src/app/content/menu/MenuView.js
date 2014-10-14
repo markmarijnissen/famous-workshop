@@ -3,7 +3,7 @@ var Transform       = require('famous/core/Transform');
 var Modifier        = require('famous/core/Modifier');
 var Surface         = require('famous/core/Surface');
 var template        = require('./Menu.jade');
-var TapHandler      = require('../../mediators/TapHandler');
+var TapHandler      = require('../helpers/TapHandler');
 
 function PageView(options) {
     View.apply(this, arguments);
@@ -13,7 +13,8 @@ function PageView(options) {
     });
 
     var surface = new Surface({
-      content: template(options.content)
+      content: template(options.content),
+      classes: ['menu']
     });
     surface.on('tap',TapHandler);
 

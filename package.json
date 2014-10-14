@@ -38,6 +38,11 @@
   },
   "dependencies": {
     "famous": "^0.3.0",
-    "famous-polyfills": "^0.3.0"
+    "famous-mediator": "^0.1.0",
+    "famous-pagecontroller": "^0.1.0",
+    "famous-polyfills": "^0.3.0",
+    "famous-router": "^0.1.0",
+    "famous-sidepanel": "^0.1.0",
+    "famous-tapevent": "^0.1.0"
   }
 }

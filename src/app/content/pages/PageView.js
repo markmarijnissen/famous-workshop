@@ -4,7 +4,7 @@ var Transform       = require('famous/core/Transform');
 var Modifier        = require('famous/core/Modifier');
 var Surface         = require('famous/core/Surface');
 var template        = require('./Page.jade');
-var TapHandler      = require('../../mediators/TapHandler');
+var TapHandler      = require('../helpers/TapHandler');
 
 function PageView(options) {
     View.apply(this, arguments);
@@ -18,6 +18,9 @@ function PageView(options) {
       classes: ['page']
     });
     surface.on('tap',TapHandler);
+
+    // PageView forwards surface events (i.e. emit touch events)
+    this._eventOutput.subscribe(surface);
 
     this.add(mod).add(surface);
 }
