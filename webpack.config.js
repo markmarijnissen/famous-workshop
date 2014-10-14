@@ -1,7 +1,7 @@
 var webpack = require('webpack');
 var ReloadPlugin = require('webpack-reload-plugin');
 var path = require('path');
-var isDevServer = process.argv.join('').indexOf('webpack-dev-server') > -1;
+var isDevServer = process.argv.join('').indexOf('webpack-dev-server') > -1 || global.DEV_SERVER;
 
 // Support for extra commandline arguments
 var argv = require('optimist')
@@ -22,14 +22,12 @@ var config = {
   resolve: {
     alias: {
       'famous':'famous/src'
-    },
-    modulesDirectories: ['lib','node_modules']
+    }
   },
   devtool:'#eval',
   devServer: {
     publicPath: '/'
   },
-  reload: isDevServer? 'localhost': null,
   module:{
     loaders:[
       { test: /\.json$/,            loader: "json-loader" },
@@ -47,7 +45,7 @@ var config = {
       VERSION: JSON.stringify(require(path.resolve(__dirname,'package.json')).version),
       ENV: JSON.stringify(argv.env)
     }),
-    new ReloadPlugin()
+    new ReloadPlugin(isDevServer? 'localhost': null)
   ]
 };
 
