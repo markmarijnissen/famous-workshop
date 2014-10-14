@@ -21,7 +21,7 @@ npm install # install dependencies
 ####Development
 
 ```bash
-webpack-dev-server --reload=localhost
+webpack-dev-server --reload=localhost # or: gulp
 ```
 
 Now navigate to:
@@ -34,11 +34,16 @@ The optional `--reload=ip` flag [adds the live-reload snippet](https://github.co
 
 ####Production
 ```bash
-webpack --minify --env=production
+webpack --minify --env=production # or: gulp build
 ```
 
 * The optional `--minify` flag minifies the output.
 * The optional `--env=xxx` flag sets a global `ENV` variable (default: `window.TARGET='dev'`).
+
+####Deploy to Github pages
+```
+gulp deploy
+```
 
 ---
 
