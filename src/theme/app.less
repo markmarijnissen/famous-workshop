@@ -1,6 +1,7 @@
 @import "http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700";
 
 body {
+  background-color: #111;
   font-family: "Source Sans Pro", Calibri, Candara, Arial, sans-serif;
   color: #333;
 }
@@ -8,7 +9,15 @@ body {
 .page {
   background-color: white;
   box-shadow: 0 -10px 15px #2B3034;
-  padding: 5px;
+  padding: 25px;
+}
+
+.author {
+  text-align: right;
+  font-weight: bold;
+}
+.content {
+  font-style: italic;
 }
 
 a {
@@ -26,10 +35,11 @@ a {
   padding: 15px;
 }
 .menu-btn {
+  color: #eee;
   background-color: lighten(#515D64,5%);
-  margin-top: -1px;
   padding: 15px;
-  border: 1px solid #444;
+  border: 1px solid #515D64;
+  border-bottom-style: none;
 }
 .menu-btn:hover {
   background-color: lighten(#515D64,10%); 

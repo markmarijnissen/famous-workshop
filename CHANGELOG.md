@@ -1,5 +1,11 @@
 # Changelog
 
+### 0.3.0 (15/10/2014)
+
+* Added SequentialLayout for Menu-Items
+* Changed into 'Famo.us' Quotes
+* Removed multi-entry
+
 ### 0.2.0 (14/10/2014)
 
 * Updated CSS.

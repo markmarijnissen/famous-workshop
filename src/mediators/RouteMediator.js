@@ -11,7 +11,10 @@ Engine.on('created:Router',function(router){
   });
 
   // Whenever the app emits a global 'navigate' event, mediate to invoke the router.
-  Engine.on('navigate',router.set);
+  Engine.on('navigate',function(href){
+    router.set(href);
+    if(Mediator.sidepanel) Mediator.sidepanel.open(false);
+  });
 
 });
 
@@ -19,4 +22,3 @@ Engine.on('created:Router',function(router){
 Engine.on('menu',function(open){
   if(Mediator.sidepanel) Mediator.sidepanel.open(open);
 });
-

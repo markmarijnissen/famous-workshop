@@ -1,12 +1,11 @@
-var Engine          = require('famous/core/Engine');
 var View            = require('famous/core/View');
 var Transform       = require('famous/core/Transform');
 var Modifier        = require('famous/core/Modifier');
 var Surface         = require('famous/core/Surface');
-var template        = require('./Page.jade');
-var TapHandler      = require('../helpers/TapHandler');
+var template        = require('./Menu.jade');
+var TapHandler      = require('../../helpers/TapHandler');
 
-function PageView(options) {
+function MenuView(options) {
     View.apply(this, arguments);
 
     var mod = new Modifier({
@@ -15,19 +14,17 @@ function PageView(options) {
 
     var surface = new Surface({
       content: template(options.content),
-      classes: ['page']
+      classes: ['menu']
     });
+    
     surface.on('tap',TapHandler);
-
-    // PageView forwards surface events (i.e. emit touch events)
-    this._eventOutput.subscribe(surface);
 
     this.add(mod).add(surface);
 }
 
-PageView.prototype = Object.create(View.prototype);
-PageView.prototype.constructor = PageView;
+MenuView.prototype = Object.create(View.prototype);
+MenuView.prototype.constructor = MenuView;
 
-PageView.DEFAULT_OPTIONS = {};
+MenuView.DEFAULT_OPTIONS = {};
 
-module.exports = PageView;
+module.exports = MenuView;

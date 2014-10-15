@@ -1,32 +1,25 @@
 var View            = require('famous/core/View');
 var PageController      = require('famous-pagecontroller');
-var PageView        = require('./pages/PageView');
-var MenuView        = require('./menu/MenuView');
+var PagesView        = require('./pages/PagesView');
+var MenuView        = require('./menu-enhanced/MenuView');
 var SidepanelLayout = require('famous-sidepanel');
 
 function AppView(options) {
   View.apply(this, arguments);
 
   // Create Menu
-  var menu = new MenuView(options.menu);
+  var menu = new MenuView({items:options.pages.pages});
 
   // Create Pages
-  var pageController = new PageController({id: 'pages'});
-  options.pages.forEach(function(pageOptions){
-    pageController.addPage(pageOptions.id,new PageView(pageOptions));
-  });
+  var content = new PagesView(options.pages);
 
   // Create SidepanelLayout
-  var layout = new SidepanelLayout({
-    id:'sidepanel',
-    sidepanel:menu,
-    content:pageController
-  });
+  options.sidepanel.sidepanel = menu;
+  options.sidepanel.content = content;
+  var layout = new SidepanelLayout(options.sidepanel);
 
   // forward events to the layout (swipe to open)
-  for(var id in pageController.pages){
-    pageController.pages[id].pipe(layout);
-  }
+  layout.subscribe(content);
 
   // Add to view
   this.add(layout);

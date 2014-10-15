@@ -13,15 +13,16 @@ var argv = require('optimist')
 
 var config = {
   context: path.join(__dirname, "src"),
-  entry: getEntries(), // every ./src/**/main.js
+  entry: ['./main'],
   output:{
     path: path.join(__dirname, "dist"),
-    filename:"[name]/js/bundle.js",
+    filename:"js/bundle.js",
     publicPath: isDevServer ? '/': ''
   },
   resolve: {
     alias: {
-      'famous':'famous/src'
+      'famous':'famous/src',
+      'common':path.join(__dirname,'src','common')
     }
   },
   devtool:'#eval',
@@ -52,29 +53,6 @@ var config = {
 if(argv.minify){
   delete config.devtool;
   config.plugins.push(new webpack.optimize.UglifyJsPlugin({mangle:false}));
-}
-
-/**
- * Search for "/src/xxx/main.js" and return { xxx: './xxx/main' }
- * A root entry can also be supplied with the js bundle being put in assets/js
- * Make sure to set __webpack_public_path__ = "../" in your resource main.js when it is
- *  in a sub directory to setup your relative path (root entries will use the default in this config)
- */
-function getEntries(){
-  // Get all entry points of our application starting with the root
-  // Our bundles will be placed in a relative path ./js
-  var apps = require('glob').sync(path.join('./src/**/main.js'));
-  var entries = {};
-  apps.forEach(function(file){
-    // Example file = src/boilerplate/main.js
-    var entry = "./" + file.substr(4,file.length-7); // = ./boilerplate/main
-    var partsOfFile = file.split('/'); // array of path parts
-    var name = '';
-    partsOfFile.forEach(function(part){ name += (part !== 'src' && part !== 'main.js') ? (name === '')?  part : '/' + part : ''});
-    if (name === '') name = 'assets'; // [optional] setup for a root entry. point to assets/js/bundle.js in index.html
-    entries[name] = entry;
-  });
-  return entries;
 }
 
 

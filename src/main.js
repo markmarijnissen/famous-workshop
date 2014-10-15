@@ -1,18 +1,19 @@
-// Require CSS
+// Require CSS & index.html
 require('famous/core/famous.css');
 require('./theme/app.less');
-
-// Copy the index.html to the output folder
 require('./index.html');
 
-// Require libs
+// Require Famo.us libs and components
 require('famous-polyfills');
 require('famous-tapevent'); //adds 'tap' event to Surfaces.
+var Engine = require('famous/core/Engine');
+var Router = require('famous-router');
+var AppView = require('./content/AppView');
 
-// Start mediators. They connect everything together
+// Start Mediators. They connect everything together
+require('famous-mediator');
 require('famous-mediator/ErrorMediator');
 require('./mediators/RouteMediator');
-
 
 // Configure inputs
 var GenericSync     = require('famous/inputs/GenericSync');
@@ -21,19 +22,11 @@ var TouchSync       = require('famous/inputs/TouchSync');
 var ScrollSync      = require('famous/inputs/ScrollSync');
 GenericSync.register({'mouse': MouseSync, 'touch': TouchSync, 'scroll':ScrollSync});
 
-// Bootstrap app
-var Engine = require('famous/core/Engine');
-var AppView = require('./content/AppView');
-var Router = require('famous-router');
-var config = require('./data/config');
-
-// Instantiate a router
+// Create the app!
+var config = require('./config');
 var router = new Router(config.router);
-
-// Create a new context
-var mainContext = Engine.createContext();
-// Create a new App;
 var app = new AppView(config);
 
 // Launch the App!
+var mainContext = Engine.createContext();
 mainContext.add(app);
