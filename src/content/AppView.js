@@ -3,6 +3,7 @@ var PageController      = require('famous-pagecontroller');
 var PagesView        = require('./pages/PagesView');
 var MenuView        = require('./menu-enhanced/MenuView');
 var SidepanelLayout = require('famous-sidepanel');
+var Transitionable = require('famous/transitions/Transitionable');
 
 function AppView(options) {
   View.apply(this, arguments);
@@ -20,6 +21,8 @@ function AppView(options) {
 
   // forward events to the layout (swipe to open)
   layout.subscribe(content);
+
+  layout.sidepanelMod.opacityFrom(this.position);
 
   // Add to view
   this.add(layout);

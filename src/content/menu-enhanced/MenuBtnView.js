@@ -1,14 +1,14 @@
 var View            = require('famous/core/View');
 var Engine          = require('famous/core/Engine');
 var Transform       = require('famous/core/Transform');
-var Modifier        = require('famous/core/Modifier');
+var StateModifier   = require('famous/modifiers/StateModifier');
 var Surface         = require('famous/core/Surface');
 var TapHandler      = require('../../helpers/TapHandler');
 
 function MenuBtnView(options) {
     View.apply(this, arguments);
 
-    var mod = new Modifier({
+    var mod = new StateModifier({
       transform: Transform.translate(0,0,1),
       size: [undefined,50]
     });

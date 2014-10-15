@@ -9,7 +9,7 @@ var config = require('./webpack.config.js');
  */
 config.plugins.push(new CordovaPlugin({
   config: 'config.xml',                     // Location of Cordova' config.xml (will be created if not found)
-  src: 'boilerplate/index.html',            // Set entry-point of cordova in config.xml
+  src: 'index.html',            // Set entry-point of cordova in config.xml
   version: true,                            // Set config.xml' version. (true = use version from package.json)
 }));
 

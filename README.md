@@ -12,9 +12,8 @@
 Make sure you have [Node.js](http://nodejs.org/) installed and `npm` is in your path.
 
 ```bash
-npm install -g webpack webpack-dev-server # install webpack
+npm install -g webpack webpack-dev-server gulp # install webpack (and gulp)
 git clone https://github.com/markmarijnissen/famous-webpack-seed # clone this repository
-# rm -rf .git # optionally remove git history
 npm install # install dependencies
 ```
 
@@ -26,7 +25,7 @@ webpack-dev-server --reload=localhost # or: gulp
 
 Now navigate to:
 
-* [http://localhost:8080/menu/index.html](http://localhost:8080/menu/index.html)
+* [http://localhost:8080/index.html](http://localhost:8080/menu/index.html)
 * [http://localhost:8080/webpack-dev-server](http://localhost:8080/webpack-dev-server) (lists all bundles)
 
 The optional `--reload=ip` flag [adds the live-reload snippet](https://github.com/markmarijnissen/webpack-reload-plugin) to your bundle(s).

@@ -12,8 +12,8 @@ Engine.on('created:Router',function(router){
 
   // Whenever the app emits a global 'navigate' event, mediate to invoke the router.
   Engine.on('navigate',function(href){
-    router.set(href);
-    if(Mediator.sidepanel) Mediator.sidepanel.open(false);
+    //router.set(href);
+    //if(Mediator.sidepanel) Mediator.sidepanel.open(false);
   });
 
 });
